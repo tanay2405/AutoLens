@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --paper: #EBEFF3;
+  --panel: #F8FAFC;
+  --ink: #14233B;
+  --muted: #5A687C;
+  --rule: #C5CFDA;
+  --rule-soft: #DCE3EA;
+
+  --reported: #14233B;
+  --derived: #0F766E;
+  --forecast: #A8480B;
+  --scenario: #9D174D;
+  --pos: #1B7A46;
+  --neg: #B3261E;
+  --baseline: #8A97A8;
+
+  --note-bg: #FBF1E3;
+  --note-error-bg: #FBE9E7;
+  --header: #14233B;
+  --header-fg: #EBEFF3;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #0E1624;
+  --panel: #152033;
+  --ink: #E6ECF4;
+  --muted: #93A1B5;
+  --rule: #2A3850;
+  --rule-soft: #1E2B40;
+
+  --reported: #E6ECF4;
+  --derived: #3CC6B8;
+  --forecast: #F29A52;
+  --scenario: #F07BAE;
+  --pos: #4CC38A;
+  --neg: #FF7A70;
+  --baseline: #6B7A90;
+
+  --note-bg: #2A2112;
+  --note-error-bg: #2F1814;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --color-reported: var(--reported);
+  --color-derived: var(--derived);
+  --color-forecast: var(--forecast);
+  --color-scenario: var(--scenario);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --color-header: var(--header);
+  --color-header-fg: var(--header-fg);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--derived);
+  outline-offset: 2px;
+}
+
+@layer base {
+  h1, h2 { font-variation-settings: "wdth" 75; letter-spacing: -0.01em; }
+}
+
+@layer components {
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+  .field {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 0.375rem 0.5rem;
+  }
+  .note {
+    background: var(--note-bg);
+    border-left: 3px solid var(--forecast);
+    border-radius: 2px;
+  }
+  .note-error {
+    background: var(--note-error-bg);
+    border-left: 3px solid var(--neg);
+    border-radius: 2px;
+  }
+}
